@@ -5,10 +5,10 @@
   "main": "index.js",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/xuekai-china/soonspace.git"
+    "url": "git+https://github.com/xuekai-china/soons-pace.git"
   },
   "scripts": {
-    "build:sdk": "webpack --config ./webpack.config.js --mode=development",
+    "build:sdk": "webpack --config ./webpack.config.js --mode=production",
     "start:docs": "vuepress dev docs",
     "build:docs:": "vuepress build docs"
   },

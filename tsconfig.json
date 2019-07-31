@@ -1,7 +1,7 @@
 // tsconfig.json
 {
   "compilerOptions": {
-    "outDir": "./dist/",
+    "outDir": "lib/dist",
     "sourceMap": true,
     "noImplicitAny": true,
     "module": "commonjs",

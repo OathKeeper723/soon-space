@@ -8,8 +8,7 @@
 import { Scene, WebGLRenderer, PerspectiveCamera, AxesHelper, Color, CubeTexture, CubeTextureLoader, RGBFormat } from 'three'
 import { OrbitControls } from 'three-orbitcontrols-ts'
 
-class SoonSpace {
-    
+interface SoonSpace {
     el: string;
     initDom: any;
     events: object;
@@ -17,8 +16,11 @@ class SoonSpace {
     renderer: any;
     scene: any;
     camera: any;
+}
 
-    constructor(option:any) {
+class SoonSpace implements SoonSpace {
+
+    constructor(option: any) {
 
         this.initDom;
 

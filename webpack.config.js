@@ -2,9 +2,9 @@ const path = require('path')
 module.exports = {
   entry: './packages/index.ts',
   output: {
-    filename: 'index.js',
-    path: path.resolve(__dirname, 'dist'),
-    publicPath: '/dist/',
+    filename: 'SoonSpace.js',
+    path: path.resolve(__dirname, 'lib/dist'),
+    publicPath: '/lib/dist/',
     libraryTarget: 'umd',
     umdNamedDefine: true
   },
