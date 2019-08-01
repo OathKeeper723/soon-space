@@ -8,7 +8,7 @@
     "url": "git+https://github.com/xuekai-china/soons-pace.git"
   },
   "scripts": {
-    "build:sdk": "webpack --config ./webpack.config.js --mode=production",
+    "build:sdk": "webpack --config ./webpack.config.js --mode=development",
     "start:docs": "vuepress dev docs",
     "build:docs:": "vuepress build docs"
   },
@@ -20,15 +20,15 @@
   "license": "ISC",
   "dependencies": {
     "signals": "^1.0.0",
-    "three": "^0.105.0",
+    "three": "^0.107.0",
     "three-orbitcontrols-ts": "^0.1.2"
   },
   "devDependencies": {
     "node-sass": "^4.12.0",
     "sass-loader": "^7.1.0",
-    "vuepress": "^1.0.0-rc.1",
     "ts-loader": "^6.0.4",
     "typescript": "^3.5.3",
+    "vuepress": "^1.0.0-rc.1",
     "webpack": "^4.37.0",
     "webpack-cli": "^3.3.6"
   }

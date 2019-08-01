@@ -5,24 +5,29 @@
  * @lastUpdate   2019-07-24
  */
 
-import { Scene, WebGLRenderer, PerspectiveCamera, AxesHelper, Color, CubeTexture, CubeTextureLoader, RGBFormat } from 'three'
+import { WebGLRenderer, AmbientLight, PerspectiveCamera, AxesHelper, Color, CubeTexture, CubeTextureLoader, RGBFormat } from 'three'
 import { OrbitControls } from 'three-orbitcontrols-ts'
+import Scene from './Scene'
+import loader from './Loader'
+
+const { loadSBM } = loader
 
 interface SoonSpace {
-    el: string;
-    initDom: any;
-    events: object;
-    config: object;
-    renderer: any;
-    scene: any;
-    camera: any;
+    el: string
+    initDom: any
+    events: object
+    config: object
+    renderer: any
+    scene: Scene
+    camera: any
+    controls: OrbitControls
 }
 
 class SoonSpace implements SoonSpace {
 
     constructor(option: any) {
 
-        this.initDom;
+        this.initDom
 
         this.findInitDom(option.el)
 
@@ -33,9 +38,20 @@ class SoonSpace implements SoonSpace {
         this.renderer = new WebGLRenderer()
         this.scene = new Scene()
         this.camera = new PerspectiveCamera(75, 1, 0.1, 100)
+        this.controls = new OrbitControls(this.camera, this.renderer.domElement)
+
+        console.log( this.camera instanceof PerspectiveCamera )
 
         this.animate()
+
+        this.initControls()
+
         this.init(this.initDom)
+
+        /*光源*/
+        const ambientLight = new AmbientLight(new Color(1, 1, 1));
+        ambientLight.intensity = 2;
+        this.scene.add(ambientLight);
 
         return this
 
@@ -50,21 +66,23 @@ class SoonSpace implements SoonSpace {
 
     }
 
-    render() {
-
-        this.renderer.render(this.scene, this.camera);
-
-    }
-
     animate() {
 
-        this.render();
+        this.renderer.render(this.scene, this.camera)
+
+        this.controls.update()
 
         requestAnimationFrame(this.animate.bind(this))
 
     }
 
     init(initDom: any) {
+
+        this.camera.position.set(-40, 40, 40);
+
+        this.camera.lookAt(this.scene.position);
+
+        this.renderer.setClearColor(0x222222);
 
         const { domElement } = this.renderer
 
@@ -78,13 +96,15 @@ class SoonSpace implements SoonSpace {
 
         this.scene.add(new AxesHelper(100))
 
-        this.initControls()
     }
 
     initControls() {
 
-        new OrbitControls(this.camera);
+        //是否可以缩放 
+        this.controls.enableZoom = true
 
+        console.log( this.controls )
+      
     }
 
     setBackgroundColor(color: string | number) {
@@ -95,35 +115,38 @@ class SoonSpace implements SoonSpace {
 
     skyBackground(dirPath: string, fileNames: string[]) {
 
-        var scene = this.scene;
+        var scene = this.scene
 
-        var cubeTextureLoader = new CubeTextureLoader();
+        var cubeTextureLoader = new CubeTextureLoader()
 
-        var cubeTexture;
+        var cubeTexture
 
         if (scene.background instanceof Color) {
 
-            cubeTexture = cubeTextureLoader.setPath(dirPath).load(fileNames);
+            cubeTexture = cubeTextureLoader.setPath(dirPath).load(fileNames)
 
-            cubeTexture.format = RGBFormat;
+            cubeTexture.format = RGBFormat
 
-            scene.background = cubeTexture;
+            scene.background = cubeTexture
 
         } else {
 
-            cubeTexture = scene.background;
+            cubeTexture = scene.background
 
-            if (cubeTexture instanceof CubeTexture) { cubeTexture.dispose(); }
+            if (cubeTexture instanceof CubeTexture) { cubeTexture.dispose() }
 
-            this.setBackgroundColor(0x4495F0);
+            this.setBackgroundColor(0x4495F0)
 
-            cubeTexture = null;
+            cubeTexture = null
 
             this.skyBackground(dirPath, fileNames)
         }
 
     }
 
+    loadSBM = loadSBM
+
 }
 
 export default SoonSpace
+
