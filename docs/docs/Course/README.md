@@ -3,7 +3,7 @@
 ###  创建一个 SoonSpace 实例
 
 ``` js
-var ss = new SoonSpace({
+var ssp = new SoonSpace({
     // 选项
 })
 ```

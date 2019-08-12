@@ -1,7 +1,10 @@
 module.exports = {
     base: '/xunwei-web/SDK/SoonSpace/Docs/',
-    title: 'SoonSpace-docs',
-    description: '智慧城市可视化管理平台-迅维智能科技主要研究建筑信息化和智能化，有智慧建筑、智慧园区、智慧安防、智慧消防、特色小镇、物联网、资产可视化管理平台等。',
+    title: 'SoonSpace 1.x',
+    description: '简洁易学的webGL插件',
+    head: [
+        ['link', { rel: 'icon', href: '/favicon.ico' }]
+    ],
     configureWebpack: {
         resolve: {
             alias: {
@@ -16,8 +19,8 @@ module.exports = {
         nav: [
             { text: '教程', link: '/Course/' },
             { text: 'API', link: '/api/' },
-            { text: '样例', link: 'http://soon.xwbuilders.com:8787/SDK/SoonSpace/' },
-            { text: 'GitHub', link: 'https://github.com/xuekai-china/soonspace' },
+            { text: '样例', link: 'http://111.231.137.202:9018/xunwei-web/SDK/SoonSpace/' },
+            { text: 'GitHub', link: 'https://github.com/xuekai-china/soon-space' },
         ],
         displayAllHeaders: true,
         sidebar: {
