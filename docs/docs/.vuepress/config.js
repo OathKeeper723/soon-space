@@ -10,24 +10,24 @@ module.exports = {
         }
     },
     markdown: {
-        lineNumbers: true
+        lineNumbers: false,
     },
     themeConfig: {
         nav: [
-            { text: '介绍', link: '/introduce/' },
+            { text: '教程', link: '/Course/' },
             { text: 'API', link: '/api/' },
             { text: '样例', link: 'http://soon.xwbuilders.com:8787/SDK/SoonSpace/' },
             { text: 'GitHub', link: 'https://github.com/xuekai-china/soonspace' },
         ],
+        displayAllHeaders: true,
         sidebar: {
-            '/introduce/': [
+            '/Course/': [
                 ''
-                // {title: '', path: '' }
             ],
             '/api/': [
                 ''
-                // {title: '', path: '' }
             ]
-        }
+        },
+        lastUpdated: '最后更新',
     }
 }
